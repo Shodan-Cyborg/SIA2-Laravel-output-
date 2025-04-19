@@ -10,7 +10,7 @@ use Illuminate\Support\Facades\DB;
 
 class TransactionController extends Controller
 {
-    public function getTransactionData1(){
+     public function getTransactionData1(){
         $easy = DB::select("SELECT t.*, u.name AS username, p.product_name, s.service_name
                             FROM transaction AS t
                             INNER JOIN users AS u ON u.id = t.user_id
@@ -20,7 +20,7 @@ class TransactionController extends Controller
         return response()->json(["success" => true, 'easy' => $easy],200);
     }
 
-    /*public function getTransactionData2()
+    public function getTransactionData2()
     {
         $moderate = DB::table('transaction AS t')
             ->select('t.*', 'u.name AS user_name', 'u.role AS user_role', 'p.product_name', 's.service_name')
@@ -30,7 +30,7 @@ class TransactionController extends Controller
             ->get();
 
         return response()->json(['success' => true, 'moderate' => $moderate], 200);
-    }*/
+    }
 
     public function getTransactionData3()
     {
@@ -73,7 +73,30 @@ class TransactionController extends Controller
     }
 
 
-    /*public function displayDataUsingJs(){
+
+
+    //This block of code functions below are for ajax, axios testing
+    public function getTransactionRecord()
+    {
+        $difficult = Transaction::with([
+            'User' => function($query){
+                $query->select('*');
+            }])->with([
+            'Products' => function($query){
+                $query->select('*');
+            }])->with([
+            'Services' => function($query){
+                $query->select('*');
+            }
+        ])->get();
+
+        return response()->json(["success" => true, "transaction.transactionsrecord" => $difficult], 200);
+    }
+
+
+    // Controller Method
+    public function getTransactions()
+    {
         $moderate = DB::table('transaction AS t')
             ->select('t.*', 'u.name AS user_name', 'u.role AS user_role', 'p.product_name', 's.service_name')
             ->join('users AS u', 'u.id', '=', 't.user_id')
@@ -81,8 +104,12 @@ class TransactionController extends Controller
             ->leftJoin('services AS s', 's.user_id', '=', 't.user_id')
             ->get();
 
-        return response()->json(["success" => true, "moderate" => $moderate], 200);
-    }*/
+        return view('transaction.transaction', compact('moderate'));
+    }
+
+
+
+
 }
 
 

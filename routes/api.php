@@ -10,6 +10,5 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request){
 });
 
 Route::group(['middleware' => 'api', 'prefix' => 'auth'], function(){
-    Route::get('/displayTransaction', [TransactionController::class,'displayDataUsingJs']);
-
+    Route::get('/transactionsrecord', [TransactionController::class, 'getTransactionRecord']);
 });

@@ -4,8 +4,8 @@
 <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <link rel="apple-touch-icon" sizes="76x76" href="/img/apple-icon.png">
-    <link rel="icon" type="image/png" href="/img/favicon.png">
+    <link rel="apple-touch-icon" sizes="76x76" href="{{asset('argon')}}/img/apple-icon.png">
+    <link rel="icon" type="image/png" href="{{asset('argon')}}/img/favicon.png">
     <title>
         Argon Dashboard 2 by Creative Tim
     </title>
@@ -23,6 +23,12 @@
 
 
     <link href="{{asset('assets')}}/css/dataTables.min.css" rel="stylesheet" />
+    <link href="{{asset('assets')}}/css/css.css" rel="stylesheet" />
+
+    {{-- For offline viewing --}}
+    {{-- <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/mdb-ui-kit/8.0.0/mdb.min.css" > --}}
+    <link rel="styleshet" href="{{asset('assets')}}/css/mdb.min.css" >
+
 </head>
 
 <body class="{{ $class ?? '' }}">
@@ -70,8 +76,14 @@
     <!-- Control Center for Soft Dashboard: parallax effects, scripts for the example pages etc -->
     <script src="{{asset('argon')}}/assets/js/argon-dashboard.js"></script>
     <script src="{{asset('assets')}}/js/jquery.min.js"></script>
-    <script src="{{asset('assets')}}/js/js.js"></script>
+    <script src="{{asset('assets')}}/js/myjs.js"></script>
     <script src="{{asset('assets')}}/js/dataTables.min.js"></script>
+    <script src="{{asset('assets')}}/js/axios.min.js"></script>
+
+    {{-- For offline purposes --}}
+    {{-- <script src="https://cdnjs.cloudflare.com/ajax/libs/mdb-ui-kit/8.0.0/mdb.umd.min.js"></script> --}}
+    <script src="{{asset('assets')}}/js/mdb.umd.min.js"></script>
+
     @stack('js');
 </body>
 

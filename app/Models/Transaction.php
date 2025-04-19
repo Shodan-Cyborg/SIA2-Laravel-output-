@@ -15,7 +15,7 @@ class Transaction extends Model
         'payment',
     ];
 
-    public function User()
+    /* public function User()
     {
         return $this->belongsTo(User::class);
     }
@@ -28,5 +28,22 @@ class Transaction extends Model
     public function Services()
     {
         return $this->belongsTo(Services::class);
+    } */
+
+
+    public function User()
+    {
+        return $this->belongsTo(User::class);
     }
+
+    public function Products()
+    {
+        return $this->belongsTo(Products::class, 'product_id');
+    }
+
+    public function Services()
+    {
+        return $this->belongsTo(Services::class, 'service_id');
+    }
+
 }

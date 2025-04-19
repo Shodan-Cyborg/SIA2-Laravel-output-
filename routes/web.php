@@ -1,6 +1,9 @@
 <?php
 
+/* use App\Http\Controllers\TableContoller; */
+
 use App\Http\Controllers\TransactionController;
+use App\Http\Controllers\ProductController;
 use Illuminate\Support\Facades\Route;
 
 
@@ -15,3 +18,13 @@ Route::get('/transactionssiaactivity4', [TransactionController::class, 'getTrans
 
 Route::get('/dashboard', [TransactionController::class, 'viewDashboard']);
 Route::get('/transactionlogs', [TransactionController::class, 'viewTransaction']);
+
+Route::get('/products', [ProductController::class, 'viewProducts'])->name('products.viewProducts');
+
+
+
+
+//This route is for SIA2 Lab Activity
+/* Route::get('/display', [TableContoller::class, 'DisplayPage']); */
+
+
